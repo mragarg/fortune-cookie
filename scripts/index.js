@@ -2,7 +2,7 @@
 
 let fortuneStr = [
     "Isn't air travel wonderful?  Breakfast in London, dinner in New York,\nluggage in Brazil.",
-    "Imitation is the sincerest form of television.\\n\t\t-- The New Mighty Mouse",
+    "Imitation is the sincerest form of television.\n\t\t-- The New Mighty Mouse",
     "The disks are getting full; purge a file today.",
     "Postmen never die, they just lose their zip.",
     "Savage's Law of Expediency:\n\tYou want it bad, you'll get it bad.",
@@ -10,24 +10,24 @@ let fortuneStr = [
 
 const newButton = document.querySelector("[data-button]");
 const fortuneDisplay = document.querySelector("[data-fortune]");
+const prevButton = document.querySelector("[data-bPrev]");
 
-let count = 0;
+let count = -1;
 
 function newFortuneDisplay() {
-    let newFortune;
-    console.log("click");
-
-    // Pulls string from array
-    newFortune = fortuneStr[count];
-    count++;
-
-    // if count reaches last string, start over
-    if(count === fortuneStr.length){
-        count = 0;
+    if(count === fortuneStr.length - 1){
+        count = -1;
     }
-
-    // New string goes to display
-    fortuneDisplay.textContent = newFortune;
+    count++;
+    fortuneDisplay.textContent = fortuneStr[count];
 }
 
+function prevFortuneDisplay() {
+    count--;
+    if(count < 0){
+        count = fortuneStr.length - 1;
+    }
+    fortuneDisplay.textContent = fortuneStr[count];}
+
 newButton.addEventListener("click", newFortuneDisplay);
+prevButton.addEventListener("click", prevFortuneDisplay);
