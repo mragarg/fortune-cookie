@@ -8,13 +8,14 @@ let fortuneStr = [
     "Savage's Law of Expediency:\n\tYou want it bad, you'll get it bad.",
 ];
 
-const newButton = document.querySelector("[data-button]");
 const fortuneDisplay = document.querySelector("[data-fortune]");
+const nextButton = document.querySelector("[data-bNext]");
 const prevButton = document.querySelector("[data-bPrev]");
+const randButton = document.querySelector("[data-bRand]");
 
 let count = -1;
 
-function newFortuneDisplay() {
+function nextFortuneDisplay() {
     if(count === fortuneStr.length - 1){
         count = -1;
     }
@@ -27,7 +28,14 @@ function prevFortuneDisplay() {
     if(count < 0){
         count = fortuneStr.length - 1;
     }
-    fortuneDisplay.textContent = fortuneStr[count];}
+    fortuneDisplay.textContent = fortuneStr[count];
+}
 
-newButton.addEventListener("click", newFortuneDisplay);
+function randomFortuneDisplay() {
+    let randomNum = Math.floor(Math.random() * Math.floor(fortuneStr.length - 1));
+    fortuneDisplay.textContent = fortuneStr[randomNum];
+}
+
+nextButton.addEventListener("click", nextFortuneDisplay);
 prevButton.addEventListener("click", prevFortuneDisplay);
+randButton.addEventListener("click", randomFortuneDisplay);
