@@ -1,8 +1,15 @@
 /* Template */
 
-.fortune {
+body {
+    background-image: url("../images/fortune-bg.jpeg");
     font-family: 'Courgette', cursive;
+}
+.fortune {
     text-align: center;
-    padding-top: 30px;
-    font-size: 15px;
+    padding-top: 100px;
+}
+
+.fortune h1 {
+    color: white;
+    font-size: 50px;
 }
