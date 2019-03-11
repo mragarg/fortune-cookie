@@ -13,6 +13,17 @@ const nextButton = document.querySelector("[data-bNext]");
 const prevButton = document.querySelector("[data-bPrev]");
 const randButton = document.querySelector("[data-bRand]");
 
+let URL = "https://my-little-cors-proxy.herokuapp.com/http://yerkee.com/api/fortune";
+let newFortune;
+fetch(URL).then(function (response){
+    return response.json();
+}).then(function (data) {
+    newFortune = data;
+    console.log(newFortune);
+    fortuneDisplay.textContent = newFortune["fortune"];
+});
+
+
 let count = -1;
 
 function nextFortuneDisplay() {
